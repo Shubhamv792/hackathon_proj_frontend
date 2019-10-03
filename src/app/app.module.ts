@@ -4,6 +4,7 @@ import { NonEmployeeComponent } from './referal/nonemployee/nonemployee.componen
 import { EmployeeComponent } from './referal/employee/employee.component';
 import { ReferalComponent } from './referal/referal.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/components/common/messageservice';
@@ -29,6 +30,7 @@ import {CheckboxModule} from 'primeng/checkbox';
     HrpageComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
