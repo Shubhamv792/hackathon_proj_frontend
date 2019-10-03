@@ -1,4 +1,3 @@
-import { element } from 'protractor';
 import { Component, OnInit } from '@angular/core';
 import * as utils from 'lodash';
 import { MessageService } from 'primeng/api';
@@ -128,7 +127,7 @@ export class NonEmployeeComponent implements OnInit {
     this.suggestionResult = [];
     if (this[keyName]) {
       this[keyName].forEach(element => {
-        if (element && element.toString().toLowerCase().indexOf(response['query'].toLowerCase()) !== -1) {
+        if (element && element.toString().toLowerCase().indexOf(response.query.toLowerCase()) !== -1) {
           this.suggestionResult.push(element);
         }
         this.suggestionResult = utils.sortBy(this.suggestionResult);
