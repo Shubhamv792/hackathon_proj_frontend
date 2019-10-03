@@ -1,0 +1,56 @@
+<div class="floatright">
+{{details[0].name}}
+<br>
+{{details[0].email}}
+
+</div>
+<app-referal-header></app-referal-header><br>
+<div class="pad-top25">
+  <label for="Id">My Created Jobs</label>
+</div><br>
+<div *ngFor="let detail of details; let i = index" class="borderbottom">
+  <div class="ui-g-12 pad-top25 pad-bot15 borderbottom">
+    <label for="Id">{{detail.header}}</label>
+    <br>
+    <div class="ui-g-12 pad-bot15" [ngClass]="{'borderbottom':detail.showQr}">
+      <div class="ui-g-9 pad-top10">
+        <div class="ui-g-6">
+          <em class="icon-Platform_Locations"></em>
+          <div class="pad5 displayinline" for="Id">{{detail.location}}</div>
+          <br>
+          <em class="icon-Star_Full"></em>
+          <div class="pad5 displayinline" for="Id">{{detail.star}}</div>
+
+        </div>
+        <div class="ui-g-6">
+          <em class="icon-Platform_Carriers"></em>
+          <div class="pad5 displayinline" for="Id">{{detail.truck}}</div>
+          <br>
+          <em class="icon-Circle_Dollar"></em>
+          <div class="pad5 displayinline" for="Id">{{detail.cost}}</div>
+          <br>
+          <em class="icon-Truck_Check"></em>
+          <div class="pad5 displayinline" for="Id">{{detail.exprience}}</div>
+        </div>
+      </div>
+      <div class="ui-g-3 pad-top0">
+        <p-button class="ui-g-12 p-Style " (click)="submitDetails()">Tell Me More
+        </p-button>
+        <p-button class="ui-g-12 p-Style pad-top10" (click)="linkQrButton(i)">Link QR
+        </p-button>
+      </div>
+    </div>
+    <div *ngIf=detail.showQr class="ui-g-12 pad-top10">
+      <label>Select QR Codes to Link Job Listing</label>
+      <div class="displayinline">
+        <div class="ui-g-12" *ngFor="let qrCode of qrCodesData; let i = index">
+          <p-checkbox [name]="qrCode.data" [value]="qrCode.id" [label]="qrCode.data" [(ngModel)]="detail.qrcode"
+            [inputId]="qrCode.data"></p-checkbox>
+        </div>
+        <p-button class="ui-g-12 p-Style pad-top10" (click)="savebutton(i)">Save
+        </p-button>
+      </div>
+    </div>
+    <!-- <label for="Id">{{detail.location}}</label><br> -->
+  </div>
+</div>

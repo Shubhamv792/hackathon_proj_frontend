@@ -1,0 +1,140 @@
+
+<div class="ui-g-4 ui-md-4 ui-sm-12 border heightforBorder positionRelative" [ngClass]="{'borderminheigh':submited}">
+  <app-referal-header></app-referal-header><br>
+    <!-- <p-scrollPanel [style]="{ height: 'calc(100vh - 150px)' }" class="width100" styleClass="customScrollPanel"> -->
+  <div class="widthResponsive1" *ngIf="!submited">
+
+    <div class="ui-g-12 pad-top25">
+      <label for="firstName">First Name</label><br>
+      <input class="widthResponsive" id="firstName" name="firstName" type="text" [(ngModel)]="firstName"
+        (blur)="nameValidator('firstName','firstNameError')"><br>
+      <div class="error-message" *ngIf="!firstName && error_submit">
+        <span class="error-msg-font">Enter First Name</span>
+      </div>
+      <div class="error-message widthResponsive" *ngIf="firstNameError && !(!firstName && error_submit)">
+        <span class="error-msg-font">Enter valid First Name</span>
+      </div>
+    </div>
+
+     <div class="ui-g-12 pad-top25">
+      <label for="lastName">Last Name</label><br>
+      <input class="widthResponsive" id="lastName" name="lastName" type="text" [(ngModel)]="lastName"
+        (blur)="nameValidator('lastName','lastNameError')"><br>
+      <div class="error-message" *ngIf="!lastName && error_submit">
+        <span class="error-msg-font">Enter Last Name</span>
+      </div>
+      <div class="error-message widthResponsive" *ngIf="lastNameError && !(!lastName && error_submit)">
+        <span class="error-msg-font">Enter valid last Name</span>
+      </div>
+    </div>
+
+    <div class="ui-g-12 pad-top25">
+      <label for="emp-phone" name="emp-phone">Phone Number</label><br>
+      <input class="widthResponsive" id="emp-phone" type="text" [(ngModel)]="emp_phone"
+        (blur)="phoneNumberValidation('empphoneError','emp_phone')"><br>
+      <div class="error-message" *ngIf="!emp_phone && error_submit">
+        <span class="error-msg-font">Enter Phone Number</span>
+      </div>
+      <div class="error-message widthResponsive" *ngIf="empphoneError && !(!emp_phone && error_submit)">
+        <span class="error-msg-font">Enter valid Phone Number</span>
+      </div>
+    </div>
+
+    <div class="ui-g-12 pad-top25">
+      <label for="address">Address</label><br>
+      <input class="widthResponsive" id="address" name="address" type="text" [(ngModel)]="address"><br>
+      <div class="error-message" *ngIf="!address && error_submit">
+        <span class="error-msg-font">Enter Address</span>
+      </div>
+    </div>
+
+    <div class="ui-g-12 pad-top25">
+      <label for="emailAddress">Email Address</label><br>
+      <input class="widthResponsive" id="emailAddress" name="emailAddress" type="text" [(ngModel)]="emailAddress"
+        (blur)="emailValidation()"><br>
+      <div class="error-message" *ngIf="!emailAddress && error_submit">
+        <span class="error-msg-font">Enter Email Address</span>
+      </div>
+      <div class="error-message widthResponsive" *ngIf="emailAddressError && !(!emailAddress && error_submit)">
+        <span class="error-msg-font">Enter valid Email Address</span>
+      </div>
+    </div>
+
+    <div class="ui-g-12 pad-top25">
+      <label for="driverLicence">Driver's Licence</label><br>
+      <input class="widthResponsive" id="driverLicence" name="driverLicence" type="text"
+        [(ngModel)]="driverLicence"><br>
+      <div class="error-message" *ngIf="!driverLicence && error_submit">
+        <span class="error-msg-font">Enter Driver's Licence</span>
+      </div>
+    </div>
+
+    <div class="ui-g-12 pad-top25">
+      <label>Can drive at night?</label><br>
+      <div class="pad-top10">
+        <div class="displayinline">No</div>
+        <p-inputSwitch class="verticalalignMiddle mar10" [(ngModel)]="driveAtNight"></p-inputSwitch>
+        <div class="displayinline">Yes</div>
+      </div>
+    </div>
+    <div class="ui-g-12 pad-top25">
+      <label>Geography Preferences</label><br>
+      <div class="pad-top10">
+        <p-autoComplete [suggestions]="suggestionResult" [multiple]="true" required
+        (completeMethod)="onDropDownClick($event,'locationData')" [forceSelection]="true"
+        emptyMessage="No Location is found" #locationPref = "ngModel" [(ngModel)]="location"></p-autoComplete>
+        <div class="error-message widthResponsive" *ngIf="(!locationPref.valid && !locationPref.pristine)">
+          <span class="error-msg-font">Enter Geography Preferences</span>
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="ui-g-12 pad-top25">
+      <label>Geography Preferences</label><br>
+      <div class="pad-top10"> -->
+        <!-- <p-inputSwitch class="verticalalignMiddle mar10" [(ngModel)]="driveAtNight"></p-inputSwitch> -->
+        <!-- <p-autoComplete [suggestions]="suggestionResult" [multiple]="true" field="label"
+          (completeMethod)="onDropDownClick($event,'locationData')" [forceSelection]="true"
+          emptyMessage="No Location is found" [(ngModel)]="location">
+        </p-autoComplete> -->
+      <!-- </div> -->
+    </div>
+    <div class="label" *ngIf="submited">
+        <h3>Thank you for confirming the details.</h3>
+        <p>We will reach out to you shortly for further action.</p>
+    </div>
+  <!-- </p-scrollPanel> -->
+    <p-button class="ui-g-12 p-Style widthResponsive mar-top25 height40 buttonStyle buttonPositin"
+      (click)="submitDetails()" *ngIf="!submited">Submit
+    </p-button>
+  </div>
+  <!-- <label for="firstName">First Name</label><br>
+<input id="firstName" name="firstName" type ="text" [(ngModel)]="firstName"><span>{{!firstName && error_submit}}</span><br>
+<div class ="error-message" *ngIf="!Id && error_submit">
+  Enter First Name
+</div>
+<label for="lastName">Last Name</label><br>
+<input id="lastName" name ="lastName" type ="text" [(ngModel)]="lastName"><br>
+<div class ="error-message" *ngIf="!lastName && error_submit">
+  Enter Last Name
+</div>
+<label for="emp-phone" name="emp-phone">Phone Number</label><br>
+<input id="emp-phone" type ="text" [(ngModel)]="emp_phone"><br>
+<div class ="error-message" *ngIf="!emp_phone && error_submit">
+  Enter Phone Number
+</div>
+<label for="address">Address</label><br>
+<input id="address" name="address" type ="text" [(ngModel)]="address"><br>
+<div class ="error-message" *ngIf="!address && error_submit">
+  Enter Address
+</div>
+<label for="emailAddress">Email Address</label><br>
+<input id="emailAddress" name="emailAddress" type ="text" [(ngModel)]="emailAddress"><br>
+<div class ="error-message" *ngIf="!emailAddress && error_submit">
+  Enter Email Address
+</div>
+<label for="driverLicence">Driver's Licence</label><br>
+<input id="driverLicence" name="driverLicence" type ="text" [(ngModel)]="driverLicence"><br>
+<div class ="error-message" *ngIf="!driverLicence && error_submit">
+  Enter Driver's Licence
+</div> -->

@@ -1,0 +1,19 @@
+<div class="ui-g-4 ui-md-4 ui-sm-12 border heightforBorder positionRelative">
+    <app-referal-header></app-referal-header><br>
+<div>
+  <div class="pad-top15">
+    Please Select the following<br>
+    <div class="pad-top15">
+    <input type="radio" name="empType" value="emp" id="empType" [(ngModel)]="empType"> <label for="empType"> Employee</label><br>
+  </div>
+    <div class="pad-top15">
+    <input type="radio" name="empType" value="nonemp" id="nonempType" [(ngModel)]="empType"> <label for="nonempType">Non  Employee</label><br>
+  </div>
+    <!-- <button (click)="route()">Continue</button> -->
+    <p-button class="ui-g-12 p-Style widthResponsive mar-top25 height40 buttonStyle buttonPositin"
+      (click)="route()">Submit
+    </p-button>
+  </div>  
+</div>
+
+</div>

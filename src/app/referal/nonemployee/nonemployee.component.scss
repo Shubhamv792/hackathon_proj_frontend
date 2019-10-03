@@ -1,0 +1,113 @@
+input {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;    
+    border-bottom: 1px solid black;
+    background: initial; 
+    width: 100%;   
+}
+
+label {
+    color: #007DBA;
+}
+
+.border{
+    border:1px solid black;
+    border-radius: 7px;
+}
+// .widthResponsive1{
+//     width: 25%;
+//     @media only screen and (max-width: 800px) {
+//         width: 50%;
+//     }
+//     @media only screen and (max-width: 500px) {
+//         width: 100%;
+//     }
+// }
+
+.pad-top25{
+    padding-top: 25px;
+}
+
+.pad-top15 {
+    padding-top: 15px;
+}
+
+.mar-top25 {
+    margin-top: 25px;
+}
+
+.height40 {
+    height: 40px;
+}
+
+.error-message {
+    color: red;
+    border-color: #f5c6cb;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.error-msg-font {
+    font-size: 12px;
+}
+
+.pad-bot10 {
+padding-bottom: 10px;
+}
+
+.mar-top5 {
+    margin-top: 5px
+}
+
+p-button /deep/ {
+    button.ui-button {
+        width: 100%;
+        background: #FEDB00 !important;
+        color: black;
+    }
+    .ui-button:not(:disabled):active {
+        width: 100%;
+        background: #FEDB00 !important;
+        color: black;
+    }
+    .ui-button:not(:disabled):hover {
+        width: 100%;
+        background: #FEDB00 !important;
+        color: black;
+    }
+}
+
+.displayinline {
+    display: inline;
+}
+
+// .heightforBorder {
+//     height: calc(100vh - 50px)!important;
+// }
+
+// .buttonPositin {
+//     bottom: 15px;
+//     position: absolute;
+//     right: 0;
+// }
+
+.positionRelative {
+    position: relative;
+
+}
+
+.pad-top10 {
+    padding-top: 10px;
+}
+
+.verticalalignMiddle {
+    vertical-align: middle;
+}
+
+.mar10 {
+    margin: 10px;
+}
+.borderminheigh{
+    min-height: calc(100vh - 50px);
+}

@@ -1,0 +1,92 @@
+<div class="ui-g-4 ui-md-4 ui-sm-12 border heightforBorder positionRelative">
+  <app-referal-header></app-referal-header><br>
+  
+  <div class="widthResponsive1" *ngIf="!submited">
+    <p-scrollPanel [style]="{ height: 'calc(100vh - 150px)' }" class="width100" styleClass="customScrollPanel">
+
+      <div class="ui-g-12 pad-top25">
+          <label for="Id"> ID</label><br>
+          <input class="widthResponsive" id="Id" name="Id" type="text" [(ngModel)]="Id"
+            (blur)="nameValidator()"><br>
+          <div class="error-message widthResponsive" *ngIf="!Id && error_submit">
+            <span class="error-msg-font">Enter  ID</span>
+          </div>
+          <div class="error-message widthResponsive" *ngIf="IdError && !(!Id && error_submit)">
+            <span class="error-msg-font">Enter valid  ID</span>
+          </div>
+        </div>
+
+      <div class="ui-g-12 pad-top25">
+          <label for="Email"> Email</label><br>
+          <input class="widthResponsive" id="Email" name="Email" type="text" [(ngModel)]="Email"
+            (blur)="emailValidation('Email','EmailError')"><br>
+          <div class="error-message widthResponsive" *ngIf="!Email && error_submit">
+            <span class="error-msg-font">Enter  Email</span>
+          </div>
+          <div class="error-message widthResponsive" *ngIf="EmailError && !(!Email && error_submit)">
+            <span class="error-msg-font">Enter valid  ID</span>
+          </div>
+        </div>
+
+    
+    <div class="ui-g-12 pad-top25">
+      <label for="candidate-name">Candidate Name</label><br>
+      <input class="widthResponsive" id="candidate-name" name="candidate-name" type="text" [(ngModel)]="candidate_name"
+        (blur)="nameValidator()"><br>
+      <div class="error-message widthResponsive" *ngIf="!candidate_name && error_submit">
+        <span class="error-msg-font">Enter Candidate Name</span>
+      </div>
+      <div class="error-message widthResponsive" *ngIf="candidate_nameError && !(!candidate_name && error_submit)">
+        <span class="error-msg-font">Enter valid Candidate Name</span>
+      </div>
+    </div>
+
+    <div class="ui-g-12 pad-top25">
+      <label for="emp-phone" name="emp-phone">Phone Number</label><br>
+      <input type="tel" class="widthResponsive" id="emp-phone" type="text" [(ngModel)]="emp_phone"
+        (blur)="phoneNumberValidation('emp_phoneNoError','emp_phone')"><br>
+      <div class="error-message widthResponsive" *ngIf="!emp_phone && error_submit">
+        <span class="error-msg-font">Enter Phone Number</span>
+      </div>
+      <div class="error-message widthResponsive" *ngIf="emp_phoneNoError && !(!emp_phone && error_submit)">
+        <span class="error-msg-font">Enter valid Phone Number</span>
+      </div>
+    </div>
+
+    <div class="ui-g-12 pad-top25">
+      <label for="candidate-email">Candidate Email ID</label><br>
+      <input class="widthResponsive" id="candidate-email" name="candidate-email" type="text"
+        [(ngModel)]="candidate_email" (blur)="emailValidation('candidate_email','candidate_emailError')"><br>
+      <div class="error-message widthResponsive" *ngIf="!candidate_email && error_submit">
+        <span class="error-msg-font">Enter Candidate Email ID</span>
+      </div>
+      <div class="error-message widthResponsive" *ngIf="candidate_emailError && !(!candidate_email && error_submit)">
+        <span class="error-msg-font">Enter valid Candidate Email ID</span>
+      </div>
+    </div>
+
+    <div class="ui-g-12 pad-top25">
+      <label for="candidate-phone">Candidate Phone number</label><br>
+      <input class="widthResponsive" id="candidate-phone" name="candidate-phone" type="text"
+        [(ngModel)]="candidate_phone" (blur)="phoneNumberValidation('emp_CandidatephoneNoError','candidate_phone')"><br>
+      <div class="error-message widthResponsive" *ngIf="!candidate_phone && error_submit">
+        <span class="error-msg-font"> Enter Candidate Phone number</span>
+      </div>
+      <div class="error-message widthResponsive"
+        *ngIf="emp_CandidatephoneNoError && !(!candidate_phone && error_submit)">
+        <span class="error-msg-font">Enter valid Candidate Phone Number</span>
+      </div>
+    </div>
+  </p-scrollPanel>
+
+    <p-button class="ui-g-12 p-Style widthResponsive mar-top25 height40 buttonStyle buttonPositin"
+      (click)="submitDetails()">Submit
+    </p-button>
+  </div>
+  <div class="label" *ngIf="submited">
+    <h3>Thank you for confirming the details.</h3>
+    <p>We will reach out to the candidate for
+      further details and your details will be
+      considered for  Referral Program.</p>
+  </div>
+</div>
