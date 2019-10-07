@@ -15,28 +15,27 @@
     <div class="ui-g-12 pad-bot15" [ngClass]="{'borderbottom':detail.showQr}">
       <div class="ui-g-9 pad-top10">
         <div class="ui-g-6">
-          <em class="icon-Platform_Locations"></em>
+          <i class="fa fa-map-marker"></i>
           <div class="pad5 displayinline" for="Id">{{detail.location}}</div>
           <br>
-          <em class="icon-Star_Full"></em>
+          <i class="fa fa-star"></i>
           <div class="pad5 displayinline" for="Id">{{detail.star}}</div>
-
         </div>
         <div class="ui-g-6">
-          <em class="icon-Platform_Carriers"></em>
+          <i class="fa fa-truck"></i>
           <div class="pad5 displayinline" for="Id">{{detail.truck}}</div>
           <br>
-          <em class="icon-Circle_Dollar"></em>
+          <i class="fa fa-arrow-right"></i>
           <div class="pad5 displayinline" for="Id">{{detail.cost}}</div>
           <br>
-          <em class="icon-Truck_Check"></em>
+          <i class="pi pi-star"></i>
           <div class="pad5 displayinline" for="Id">{{detail.exprience}}</div>
         </div>
       </div>
       <div class="ui-g-3 pad-top0">
-        <p-button class="ui-g-12 p-Style " (click)="submitDetails()">Tell Me More
+        <p-button class="ui-g-12 p-Style " (click)="submitDetails()" label="Tell Me More">
         </p-button>
-        <p-button class="ui-g-12 p-Style pad-top10" (click)="linkQrButton(i)">Link QR
+        <p-button class="ui-g-12 p-Style pad-top10" (click)="linkQrButton(i)" label="Link QR">
         </p-button>
       </div>
     </div>
@@ -47,7 +46,7 @@
           <p-checkbox [name]="qrCode.data" [value]="qrCode.id" [label]="qrCode.data" [(ngModel)]="detail.qrcode"
             [inputId]="qrCode.data"></p-checkbox>
         </div>
-        <p-button class="ui-g-12 p-Style pad-top10" (click)="savebutton(i)">Save
+        <p-button class="ui-g-12 p-Style pad-top10" (click)="savebutton(i)" label="Save">
         </p-button>
       </div>
     </div>

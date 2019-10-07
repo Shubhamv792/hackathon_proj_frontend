@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/components/common/messageservice';
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {InputSwitchModule} from 'primeng/inputswitch';
@@ -30,6 +31,7 @@ import {CheckboxModule} from 'primeng/checkbox';
     HrpageComponent
   ],
   imports: [
+    AngularFontAwesomeModule,
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,

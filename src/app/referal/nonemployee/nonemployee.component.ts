@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import * as utils from 'lodash';
 import { MessageService } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./nonemployee.component.scss']
 })
 export class NonEmployeeComponent implements OnInit {
+  @ViewChild('locationPref',{static: false}) locationPref;
   firstName: string;
   firstNameError: boolean;
   lastName: string;
@@ -135,6 +136,8 @@ export class NonEmployeeComponent implements OnInit {
     }
   }
   submitDetails() {
+    console.log(this.locationPref);
+    this.locationPref.control.markAsTouched();
     this.error_submit = true;
     if (!this.firstName || this.firstNameError || !this.lastName ||
       this.lastNameError || !this.emp_phone || this.empphoneError || !this.address || !this.emailAddress ||

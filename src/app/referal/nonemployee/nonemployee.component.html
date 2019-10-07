@@ -79,11 +79,11 @@
     </div>
     <div class="ui-g-12 pad-top25">
       <label>Geography Preferences</label><br>
-      <div class="pad-top10">
+      <div class="pad-top10 autoCompleteStyle">
         <p-autoComplete [suggestions]="suggestionResult" [multiple]="true" required
         (completeMethod)="onDropDownClick($event,'locationData')" [forceSelection]="true"
-        emptyMessage="No Location is found" #locationPref = "ngModel" [(ngModel)]="location"></p-autoComplete>
-        <div class="error-message widthResponsive" *ngIf="(!locationPref.valid && !locationPref.pristine)">
+        emptyMessage="No Location is found" #locationPref="ngModel" [(ngModel)]="location"></p-autoComplete>
+        <div class="error-message widthResponsive" *ngIf="(!locationPref.valid && locationPref.touched)">
           <span class="error-msg-font">Enter Geography Preferences</span>
         </div>
       </div>
@@ -105,8 +105,7 @@
     </div>
   <!-- </p-scrollPanel> -->
     <p-button class="ui-g-12 p-Style widthResponsive mar-top25 height40 buttonStyle buttonPositin"
-      (click)="submitDetails()" *ngIf="!submited">Submit
-    </p-button>
+      (click)="submitDetails()" *ngIf="!submited" label="Submit"></p-button>
   </div>
   <!-- <label for="firstName">First Name</label><br>
 <input id="firstName" name="firstName" type ="text" [(ngModel)]="firstName"><span>{{!firstName && error_submit}}</span><br>

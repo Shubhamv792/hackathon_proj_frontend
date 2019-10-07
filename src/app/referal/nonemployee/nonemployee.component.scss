@@ -51,7 +51,14 @@ label {
 .error-msg-font {
     font-size: 12px;
 }
-
+:host ::ng-deep .autoCompleteStyle {
+    .ui-autocomplete-multiple {
+        width: 100% !important;
+    }
+    .ui-autocomplete-multiple-container {
+        width: 100% !important;
+    }    
+}
 .pad-bot10 {
 padding-bottom: 10px;
 }
