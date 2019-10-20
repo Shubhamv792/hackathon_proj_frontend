@@ -11,6 +11,7 @@ export class JobsComponent implements OnInit {
   currentEmpType:object;
   cols:Array<object>;
   values:Array<object>;
+  loading: boolean;
   empColumnSet:Array<object> = [
     { field: 'candidateName', header: 'Candidate Name' },
     { field: 'phoneNumber', header: 'Phone Number' },
@@ -30,6 +31,7 @@ export class JobsComponent implements OnInit {
   constructor(private readonly jobsService:JobsService) {
     this.empTypes = [{label:'Employee',value: 'emp'},{label:'Nonemployee',value: 'nonemp'}];
     this.currentEmpType = {label:'Employee',value:'emp'};
+    this.loading = false;
     this.cols = [];
     this.values = [];
   }
@@ -38,13 +40,17 @@ export class JobsComponent implements OnInit {
     this.populateEmpGrid();
   }
   populateEmpGrid() {
+    this.loading = true;
     this.jobsService.getEmpJobDetails().subscribe((data:Array<object>) => {
+      this.loading = false;
       this.values = data;
       this.cols = this.empColumnSet;
     });
   }
   populateNonEmpGrid() {
+    this.loading = true;
     this.jobsService.getNonEmpJobDetails().subscribe((data:Array<object>) => {
+      this.loading = false;
       this.values = data;
       this.cols = this.nonEmpColumnSet;
     });
@@ -52,6 +58,13 @@ export class JobsComponent implements OnInit {
   onChangeDropdown(event) {
     console.log(event.value.label);
     if(event.value.value === 'emp') {
+      this.populateEmpGrid();
+    } else {
+      this.populateNonEmpGrid();
+    }
+  }
+  refreshData() {
+    if(this.currentEmpType['value'] === 'emp') {
       this.populateEmpGrid();
     } else {
       this.populateNonEmpGrid();

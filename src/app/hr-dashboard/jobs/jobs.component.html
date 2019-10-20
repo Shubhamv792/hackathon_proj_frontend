@@ -1,9 +1,12 @@
 <h3>Referal Applicants</h3>
 <p-dropdown [options]="empTypes" [(ngModel)]="currentEmpType" placeholder="Select a City" optionLabel="label" [showClear]="true" (onChange)="onChangeDropdown($event)"></p-dropdown>
 <br><br>
-<p-table [columns]="cols" [value]="values" [scrollable]="true" scrollHeight="1000px" [resizableColumns]="true">
+<div class="refresh-button">
+    <p-button label="Refresh Table" (click)="refreshData()"></p-button> 
+</div>
+<p-table [loading]="loading" [columns]="cols" [value]="values" [scrollable]="true" scrollHeight="1000px" [resizableColumns]="true">
     <ng-template pTemplate="header" let-columns>
-        <tr class="width-col">
+        <tr>
             <th *ngFor="let col of columns" pResizableColumn style="width:250px">
                 {{col.header}}
             </th>
@@ -12,7 +15,17 @@
     <ng-template pTemplate="body" let-car let-columns="columns" class="ui-resizable-column">
         <tr>
             <td *ngFor="let col of columns" style="width:250px">
-                    {{car[col.field]}}
+                <ng-container [ngSwitch]="col.field">
+                    <ng-container *ngSwitchCase="'driveAtNight'">
+                        <ng-container *ngIf="car[col.field]">
+                            YES
+                        </ng-container>
+                        <ng-container *ngIf="!car[col.field]">
+                            NO
+                        </ng-container>
+                    </ng-container>
+                    <ng-container *ngSwitchDefault>{{car[col.field]}}</ng-container>
+                </ng-container>
             </td>
         </tr>
     </ng-template>

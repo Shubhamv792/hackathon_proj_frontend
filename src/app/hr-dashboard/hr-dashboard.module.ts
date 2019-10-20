@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardViewComponent } from './dashboard-view.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { FormsModule } from '@angular/forms';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   declarations: [LoginComponent, DashboardViewComponent, JobsComponent],
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     HrDashboardRoutingModule,
     DropdownModule,
     TableModule,
-    FormsModule
+    FormsModule,
+    ButtonModule
   ]
 })
 export class HrDashboardModule { }
