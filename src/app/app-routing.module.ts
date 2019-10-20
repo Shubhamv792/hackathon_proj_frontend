@@ -22,6 +22,10 @@ const routes: Routes = [{
   path: 'referal/hrpage/:id',
   component: HrpageComponent,
 },
+{
+  path: 'referal/hrdash',
+  loadChildren: () => import ('./hr-dashboard/hr-dashboard.module').then(m => m.HrDashboardModule)
+},
 { path: '', redirectTo: '/referal', pathMatch: 'full' },
 { path: '**', redirectTo: '/referal', pathMatch: 'full' }];
 

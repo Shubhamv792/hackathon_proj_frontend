@@ -1,1 +1,19 @@
-<p>jobs works!</p>
+<h3>Referal Applicants</h3>
+<p-dropdown [options]="empTypes" [(ngModel)]="currentEmpType" placeholder="Select a City" optionLabel="label" [showClear]="true" (onChange)="onChangeDropdown($event)"></p-dropdown>
+<br><br>
+<p-table [columns]="cols" [value]="values" [scrollable]="true" scrollHeight="1000px" [resizableColumns]="true">
+    <ng-template pTemplate="header" let-columns>
+        <tr class="width-col">
+            <th *ngFor="let col of columns" pResizableColumn style="width:250px">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-car let-columns="columns" class="ui-resizable-column">
+        <tr>
+            <td *ngFor="let col of columns" style="width:250px">
+                    {{car[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
