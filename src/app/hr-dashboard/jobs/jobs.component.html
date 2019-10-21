@@ -1,10 +1,12 @@
 <h3>Referal Applicants</h3>
-<p-dropdown [options]="empTypes" [(ngModel)]="currentEmpType" placeholder="Select a City" optionLabel="label" [showClear]="true" (onChange)="onChangeDropdown($event)"></p-dropdown>
+<p-dropdown [options]="empTypes" [(ngModel)]="currentEmpType" placeholder="Select Emp Status" optionLabel="label"
+    [showClear]="true" (onChange)="onChangeDropdown($event)"></p-dropdown>
 <br><br>
 <div class="refresh-button">
-    <p-button label="Refresh Table" (click)="refreshData()"></p-button> 
+    <p-button label="Refresh Table" (click)="refreshData()"></p-button>
 </div>
-<p-table [loading]="loading" [columns]="cols" [value]="values" [scrollable]="true" scrollHeight="1000px" [resizableColumns]="true">
+<p-table [loading]="loading" [columns]="cols" [value]="values" [scrollable]="true" scrollHeight="1000px"
+    [resizableColumns]="true">
     <ng-template pTemplate="header" let-columns>
         <tr>
             <th *ngFor="let col of columns" pResizableColumn style="width:250px">

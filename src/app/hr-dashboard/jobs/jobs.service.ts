@@ -7,14 +7,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class JobsService {
 
-  constructor(private readonly httpClient:HttpClient) {
+  constructor(private readonly httpClient: HttpClient) {
 
   }
 
-  getEmpJobDetails():Observable<object> {
+  getEmpJobDetails(): Observable<object> {
     return this.httpClient.get('https://referal-backend.herokuapp.com/api/emp');
   }
-  getNonEmpJobDetails():Observable<object> {
+  getNonEmpJobDetails(): Observable<object> {
     return this.httpClient.get('https://referal-backend.herokuapp.com/api/nonemp');
   }
 }

@@ -1,13 +1,16 @@
 <div class="floatright">
-{{details[0].name}}
-<br>
-{{details[0].email}}
+  {{details[0].name}}
+  <br>
+  {{details[0].email}}
 
 </div>
 <app-referal-header></app-referal-header><br>
 <div class="pad-top25">
   <label for="Id">My Created Jobs</label>
 </div><br>
+<div class="referlButton">
+  <p-button (click)="routeToReferalApplicants()" label="See Referal Applicants"></p-button>
+</div>
 <div *ngFor="let detail of details; let i = index" class="borderbottom">
   <div class="ui-g-12 pad-top25 pad-bot15 borderbottom">
     <label for="Id">{{detail.header}}</label>

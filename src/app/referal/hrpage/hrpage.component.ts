@@ -1,6 +1,6 @@
 import { MessageService } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,8 +13,10 @@ export class HrpageComponent implements OnInit {
   qrCodesData: any;
   qrvalue: any;
   id: Number;
-  constructor(private readonly activatedRoute: ActivatedRoute,private readonly httpClient:HttpClient,private messageService:MessageService) {
-    
+  constructor(private readonly activatedRoute: ActivatedRoute,
+    private readonly httpClient: HttpClient, private messageService: MessageService,
+    private readonly router: Router) {
+
 
     // this.details = [
     //   {
@@ -37,7 +39,7 @@ export class HrpageComponent implements OnInit {
     //     qrcode: [],
     //     showQr: false
     //   }];
-    this.qrCodesData= [{
+    this.qrCodesData = [{
       data: 'QR Code #345 - Cafeteria',
       id: '1'
     },
@@ -48,8 +50,8 @@ export class HrpageComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.activatedRoute.snapshot.params['id']) {
-      this.id = this.activatedRoute.snapshot.params['id'];
+    if (this.activatedRoute.snapshot.params.id) {
+      this.id = this.activatedRoute.snapshot.params.id;
       this.httpClient.get(`https://referal-backend.herokuapp.com/api/hr/${this.id}`).subscribe(val => {
         this.details = val;
       }, err => {
@@ -63,5 +65,8 @@ export class HrpageComponent implements OnInit {
   }
   linkQrButton(index) {
     this.details[index].showQr = !this.details[index].showQr;
+  }
+  routeToReferalApplicants() {
+    this.router.navigate(['/referal/hrdash']);
   }
 }

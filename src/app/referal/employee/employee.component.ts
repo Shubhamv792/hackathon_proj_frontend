@@ -24,7 +24,7 @@ export class EmployeeComponent implements OnInit {
   EmailError: boolean;
   Email: string;
   constructor(private readonly changeDetectorRef: ChangeDetectorRef, private readonly httpClient: HttpClient,
-    private messageService: MessageService) {
+              private messageService: MessageService) {
     this.Id = '';
     this.Email = '';
     this.candidate_name = '';

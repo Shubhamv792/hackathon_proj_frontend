@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./nonemployee.component.scss']
 })
 export class NonEmployeeComponent implements OnInit {
-  @ViewChild('locationPref',{static: false}) locationPref;
+  @ViewChild('locationPref', {static: false}) locationPref;
   firstName: string;
   firstNameError: boolean;
   lastName: string;
