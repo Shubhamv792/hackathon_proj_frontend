@@ -8,7 +8,7 @@
             scrollHeight="1000px" [resizableColumns]="true" selectionMode="single" >
             <ng-template pTemplate="header" let-columns>
                 <tr>
-                    <th style="width: 2.25em">
+                    <th style="width: 50px">
                         <!-- <p-tableHeaderCheckbox [disabled]="selectedLoads.length"></p-tableHeaderCheckbox> -->
                     </th>
                     <th *ngFor="let col of columns" style="width:250px">
@@ -18,7 +18,7 @@
             </ng-template>
             <ng-template pTemplate="body" let-rowData let-columns="columns">
                 <tr>
-                    <td style="width: 2.25em">
+                    <td style="width: 50px">
                         <p-tableCheckbox [value]="rowData" [disabled]="selectedLoads.length && rowData !== selectedLoads[0]"></p-tableCheckbox>
                     </td>
                     <td *ngFor="let col of columns" style="width:250px">
