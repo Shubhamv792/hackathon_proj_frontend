@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import * as utils from 'lodash';
+import { MessageService } from 'primeng/api';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-move-loads',
@@ -27,7 +29,8 @@ export class MoveLoadsComponent implements OnInit {
   locationData: Array<string>;
   fromTimePref: string;
   toTimePref: string;
-  constructor(private readonly changeDetector:ChangeDetectorRef) { 
+  constructor(private readonly changeDetector:ChangeDetectorRef,private readonly httpClient: HttpClient,
+    private messageService: MessageService) { 
     this.licenseId = '';
     this.error_submit = false;
     this.candidate_name = '';
@@ -105,8 +108,27 @@ export class MoveLoadsComponent implements OnInit {
     if (this.candidate_nameError || this.emp_phoneNoError || !this.licenseId || !this.candidate_name  || !this.fromLocation|| !this.toLocation || !this.emp_phone || this.EmailError || !this.Email || !this.ssn) {
       return;
     } else {
-      this.submitted = true;
+      this.httpClient.post('https://referal-backend.herokuapp.com/api/load', this.getParameters()).subscribe(val => {
+        this.submitted = true;
+      }, err => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Error in Saving For Details'
+        });
+      });
       this.changeDetector.detectChanges();
     }
+  }
+  getParameters() {
+    return {
+    licenseId: this.licenseId,
+    candidate_name: this.candidate_name,
+    emp_phone: this.emp_phone,
+    Email: this.Email,
+    ssn: this.ssn,
+    fromLocation: this.fromLocation,
+    toLocation: this.toLocation
+    };
   }
 }

@@ -1,3 +1,47 @@
 td {
     word-break: break-all;
 }
+.head {
+    color: #007DBA;
+}
+.table {
+    margin:8px;
+}
+p-button /deep/ {
+    button.ui-button {
+        width: 100%;
+        background: #FEDB00 !important;
+        color: black;
+    }
+    .ui-button:not(:disabled):active {
+        width: 100%;
+        background: #FEDB00 !important;
+        color: black;
+    }
+    .ui-button:not(:disabled):hover {
+        width: 100%;
+        background: #FEDB00 !important;
+        color: black;
+    }
+}
+.submitButton {
+    text-align: center;
+}
+.submitPos {
+    position: relative;
+    top: 10px;
+}
+.body1{
+    color:#007DBA;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-shadow: 2px 4px 3px 0px lightgray;
+    .bodyNum{
+    }
+}
+.submitedMsg{
+    color:grey;
+    padding: 20px;
+    border: 0.2px solid #007DBA;
+    box-shadow: 2px 4px 10px 0px lightgray;    
+    
+}

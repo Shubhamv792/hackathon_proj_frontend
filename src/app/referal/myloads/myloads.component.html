@@ -1,25 +1,40 @@
-<h3>My Loads</h3>
-<span>Available To Move</span>
-<p-table [columns]="loadColumnSet" [value]="loads" [(selection)]="selectedLoads" [scrollable]="true" scrollHeight="1000px"
-[resizableColumns]="true" >
-    <ng-template pTemplate="header" let-columns>
-        <tr>
-            <th style="width: 2.25em">
-                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-            </th>
-            <th *ngFor="let col of columns" style="width:250px">
-                {{col.header}}
-            </th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr>
-            <td style="width: 2.25em"> 
-                <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
-            </td>
-            <td *ngFor="let col of columns" style="width:250px">
-                {{rowData[col.field]}}
-            </td>
-        </tr>
-    </ng-template>
-</p-table>
+<h2 class="head">My Loads</h2>
+<div *ngIf="!submitted">
+    <div>
+        <span class ="body1"><span class="bodyNum">{{loads.length}}</span> Loads are Available to Move. Select any one load to save your preference.</span>
+    </div><br>
+    <div class="table">
+        <p-table [columns]="loadColumnSet" [value]="loads" [(selection)]="selectedLoads" [scrollable]="true"
+            scrollHeight="1000px" [resizableColumns]="true" selectionMode="single" >
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th style="width: 2.25em">
+                        <!-- <p-tableHeaderCheckbox [disabled]="selectedLoads.length"></p-tableHeaderCheckbox> -->
+                    </th>
+                    <th *ngFor="let col of columns" style="width:250px">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                    <td style="width: 2.25em">
+                        <p-tableCheckbox [value]="rowData" [disabled]="selectedLoads.length && rowData !== selectedLoads[0]"></p-tableCheckbox>
+                    </td>
+                    <td *ngFor="let col of columns" style="width:250px">
+                        {{rowData[col.field]}}
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div class="submitButton" *ngIf="selectedLoads.length">
+        <p-button class="submitPos" (click)="onSaveLoadPreference()" label="Submit"></p-button>
+    </div>
+</div>
+<div *ngIf="submitted"><br>
+    <div class="submitedMsg">
+        <span>Pickup Appointment for Load Number <b>#{{selectedLoads[0].loadNum}}</b> is confirmed. <br>Pick up the shipment from <b>{{selectedLoads[0].origin}}</b> on 
+        <b>{{selectedLoads[0].pickApp}}.</b></span>
+    </div>
+</div>
