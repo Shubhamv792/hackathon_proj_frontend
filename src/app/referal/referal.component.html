@@ -1,19 +1,40 @@
 <div class="ui-g-4 ui-md-4 ui-sm-12 border heightforBorder positionRelative">
-    <app-referal-header></app-referal-header><br>
-<div>
-  <div class="pad-top15">
-    Please Select the following<br>
-    <div class="pad-top15">
-    <input type="radio" name="empType" value="emp" id="empType" [(ngModel)]="empType"> <label for="empType"> Employee</label><br>
+  <app-referal-header></app-referal-header><br>
+  <div>
+    <div class="head">
+      Please Select the following<br>
+      <!-- <div class="pad-top15">
+        <input type="radio" name="empType" value="emp" id="empType" [(ngModel)]="empType"> <label for="empType">
+          Employee</label><br>
+      </div>
+      <div class="pad-top15">
+        <input type="radio" name="empType" value="nonemp" id="nonempType" [(ngModel)]="empType"> <label
+          for="nonempType">Non Employee</label><br>
+      </div> -->
+      <br>
+      <div class="ui-g-5 card" (click)="this.route('nonemp')">
+        <div><b>Recruitment</b></div>
+        <small>
+          Apply For Jobs
+        </small>
+      </div>
+      <div class="ui-g-5 card" (click)="route('emp')">
+        <div><b>Referal</b></div>
+        <small>
+          Refer Your Friends
+        </small>        
+      </div>
+      <div class="ui-g-5 card" (click)="route('loads')">
+        <div><b>Move Loads</b></div>
+        <small>
+          Apply for moving loads in your area of interest
+        </small>        
+      </div>
+      <!-- <button (click)="route()">Continue</button> -->
+      <!-- <p-button class="ui-g-12 p-Style widthResponsive mar-top25 height40 buttonStyle buttonPositin" (click)="route()"
+        label="Submit">
+      </p-button> -->
+    </div>
   </div>
-    <div class="pad-top15">
-    <input type="radio" name="empType" value="nonemp" id="nonempType" [(ngModel)]="empType"> <label for="nonempType">Non  Employee</label><br>
-  </div>
-    <!-- <button (click)="route()">Continue</button> -->
-    <p-button class="ui-g-12 p-Style widthResponsive mar-top25 height40 buttonStyle buttonPositin"
-      (click)="route()" label="Submit">
-    </p-button>
-  </div>  
-</div>
 
 </div>

@@ -1,0 +1,25 @@
+<h3>My Loads</h3>
+<span>Available To Move</span>
+<p-table [columns]="loadColumnSet" [value]="loads" [(selection)]="selectedLoads" [scrollable]="true" scrollHeight="1000px"
+[resizableColumns]="true" >
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th style="width: 2.25em">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th *ngFor="let col of columns" style="width:250px">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td style="width: 2.25em"> 
+                <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+            </td>
+            <td *ngFor="let col of columns" style="width:250px">
+                {{rowData[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

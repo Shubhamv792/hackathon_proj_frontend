@@ -15,8 +15,8 @@ export class ReferalComponent implements OnInit {
   ngOnInit() {
 
   }
-  route() {
-    console.log(this.empType);
+  route(empType:string) {
+    this.empType = empType;
     this.router.navigate(['referal', this.empType]);
   }
 }

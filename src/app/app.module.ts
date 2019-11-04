@@ -18,7 +18,11 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
 import { FormsModule } from '@angular/forms';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {CheckboxModule} from 'primeng/checkbox';
-
+import {CardModule} from 'primeng/card';
+import {CalendarModule} from 'primeng/calendar';
+import { MoveLoadsComponent } from './referal/move-loads/move-loads.component';
+import { MyloadsComponent } from './referal/myloads/myloads.component';
+import {TableModule} from 'primeng/table';
 
 
 @NgModule({
@@ -28,14 +32,19 @@ import {CheckboxModule} from 'primeng/checkbox';
     EmployeeComponent,
     NonEmployeeComponent,
     ReferalHeaderComponent,
-    HrpageComponent
+    HrpageComponent,
+    MoveLoadsComponent,
+    MyloadsComponent
   ],
   imports: [
     AngularFontAwesomeModule,
     BrowserAnimationsModule,
+    TableModule,
     BrowserModule,
     AppRoutingModule,
+    CalendarModule,
     FormsModule,
+    CardModule,
     ScrollPanelModule,
     InputSwitchModule,
     ButtonModule,

@@ -4,6 +4,8 @@ import { EmployeeComponent } from './referal/employee/employee.component';
 import { ReferalComponent } from './referal/referal.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { MoveLoadsComponent } from './referal/move-loads/move-loads.component';
+import { MyloadsComponent } from './referal/myloads/myloads.component';
 
 const routes: Routes = [{
   path: 'referal',
@@ -17,6 +19,14 @@ const routes: Routes = [{
 {
   path: 'referal/nonemp',
   component: NonEmployeeComponent,
+},
+{
+  path: 'referal/loads',
+  component: MoveLoadsComponent,
+},
+{
+  path:'referal/loads/myloads',
+  component:MyloadsComponent
 },
 {
   path: 'referal/hrpage/:id',

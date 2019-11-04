@@ -1,0 +1,115 @@
+<div class="ui-g-4 ui-md-4 ui-sm-12 border heightforBorder positionRelative">
+    <app-referal-header></app-referal-header><br>
+
+    <div class="widthResponsive1" *ngIf="!submitted">
+        <p-scrollPanel [style]="{ height: 'calc(100vh - 150px)' }" class="width100" styleClass="customScrollPanel">
+
+            <div class="ui-g-12 pad-top25">
+                <label for="Id"> Driver's License No</label><br>
+                <input class="widthResponsive" id="Id" name="Id" type="text" [(ngModel)]="licenseId"><br>
+                <div class="error-message widthResponsive" *ngIf="!licenseId && error_submit">
+                    <span class="error-msg-font">Enter License No</span>
+                </div>
+            </div>
+            <div class="ui-g-12 pad-top25">
+                <label for="candidate-name">Name</label><br>
+                <input class="widthResponsive" id="candidate-name" name="candidate-name" type="text"
+                    [(ngModel)]="candidate_name" (blur)="nameValidator()"><br>
+                <div class="error-message widthResponsive" *ngIf="!candidate_name && error_submit">
+                    <span class="error-msg-font">Enter Name</span>
+                </div>
+                <div class="error-message widthResponsive"
+                    *ngIf="candidate_nameError && !(!candidate_name && error_submit)">
+                    <span class="error-msg-font">Enter valid Name</span>
+                </div>
+            </div>
+            <div class="ui-g-12 pad-top25">
+                <label for="emp-phone" name="emp-phone">Phone Number</label><br>
+                <input type="tel" class="widthResponsive" id="emp-phone" type="text" [(ngModel)]="emp_phone"
+                    (blur)="phoneNumberValidation('emp_phoneNoError','emp_phone')"><br>
+                <div class="error-message widthResponsive" *ngIf="!emp_phone && error_submit">
+                    <span class="error-msg-font">Enter Phone Number</span>
+                </div>
+                <div class="error-message widthResponsive" *ngIf="emp_phoneNoError && !(!emp_phone && error_submit)">
+                    <span class="error-msg-font">Enter valid Phone Number</span>
+                </div>
+            </div>
+            <div class="ui-g-12 pad-top25">
+                <label for="Email"> Email ID</label><br>
+                <input class="widthResponsive" id="Email" name="Email" type="text" [(ngModel)]="Email"
+                    (blur)="emailValidation('Email','EmailError')"><br>
+                <div class="error-message widthResponsive" *ngIf="!Email && error_submit">
+                    <span class="error-msg-font">Enter Email</span>
+                </div>
+                <div class="error-message widthResponsive" *ngIf="EmailError && !(!Email && error_submit)">
+                    <span class="error-msg-font">Enter valid ID</span>
+                </div>
+            </div>
+            <div class="ui-g-12 pad-top25">
+                <label>Geography Preferences</label><br>
+                <div class="ui-g-6">
+                    <div class="autoCompleteStyle">
+                        <p-autoComplete [suggestions]="suggestionResult" required
+                            (completeMethod)="onDropDownClick($event,'locationData')" [forceSelection]="true"
+                            placeholder="From" emptyMessage="No Target Locations Found" #fromLocationPref="ngModel"
+                            [(ngModel)]="fromLocation"></p-autoComplete>
+                        <div class="error-message widthResponsive"
+                            *ngIf="(!fromLocationPref.valid && fromLocationPref.touched)">
+                            <span class="error-msg-font">Give a Valid Location Preference</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g-6">
+                    <div class="autoCompleteStyle">
+                        <p-autoComplete [suggestions]="suggestionResult" required
+                            (completeMethod)="onDropDownClick($event,'locationData')" [forceSelection]="true"
+                            placeholder="To" emptyMessage="No Target Locations Found" #toLocationPref="ngModel"
+                            [(ngModel)]="toLocation"></p-autoComplete>
+                        <div class="error-message widthResponsive"
+                            *ngIf="(!toLocationPref.valid && toLocationPref.touched)">
+                            <span class="error-msg-font">Give a Valid Location Preference</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="ui-g-12">
+                <div class="ui-g-6">
+                    <div class="autoCompleteStyle">
+                        <p-autoComplete [suggestions]="suggestionResult" required
+                            (completeMethod)="onDropDownClick($event,'locationData')" [forceSelection]="true"
+                            placeholder="To" emptyMessage="No Target Locations Found" #toLocationPref="ngModel"
+                            [(ngModel)]="toLocation"></p-autoComplete>
+                        <div class="error-message widthResponsive"
+                            *ngIf="(!toLocationPref.valid && toLocationPref.touched)">
+                            <span class="error-msg-font">Give a Valid Location Preference</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g-6">
+                    <input type="date" placeholder="Date">
+                </div>
+            </div> -->
+            <div class="ui-g-12 pad-top25">
+                <label for="SSN"> SSN</label><br>
+                <input class="widthResponsive" id="SSN" name="ssn" type="text" [(ngModel)]="ssn"
+                    (blur)="ssnValidation('ssn','ssnError')"><br>
+                <div class="error-message widthResponsive" *ngIf="!ssn && error_submit">
+                    <span class="error-msg-font">Enter SSN</span>
+                </div>
+                <div class="error-message widthResponsive" *ngIf="ssnError && !(!ssn && error_submit)">
+                    <span class="error-msg-font">Enter valid SSN</span>
+                </div>
+            </div>
+
+        </p-scrollPanel>
+
+        <p-button class="ui-g-12 p-Style widthResponsive mar-top25 height40 buttonStyle buttonPositin"
+            (click)="submitDetails()" label="Submit">
+        </p-button>
+    </div>
+    <div class="label" *ngIf="submitted">
+        <h3>Thank you for confirming the details.</h3>
+        <p>We will reach out to you for any available loads to move in your preferred location.</p>
+    </div>
+</div>
